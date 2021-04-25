@@ -8,7 +8,7 @@ public class ItemCollect : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            GetComponent<IStatsModifier>().addToCharacter(other.gameObject);
+            GetComponent<IStatsModifier>().modifyStats(other.gameObject);
             gameObject.SetActive(false);
         }
     }
