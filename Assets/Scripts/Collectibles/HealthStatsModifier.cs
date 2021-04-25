@@ -5,8 +5,8 @@ using UnityEngine;
 public class HealthStatsModifier : MonoBehaviour , IStatsModifier
 {
     [SerializeField]private int healthToAdd = 25;
-    
-    public void addToCharacter(GameObject player)
+
+    public void modifyStats(GameObject player)
     {
         player.GetComponent<Health>()?.addHealth(healthToAdd);
     }
