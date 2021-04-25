@@ -6,7 +6,7 @@ public class StaminaStatsModifier : MonoBehaviour , IStatsModifier
 {
     [SerializeField]private int staminaToAdd = 50;
     
-    public void addToCharacter(GameObject player)
+    public void modifyStats(GameObject player)
     {
         player.GetComponent<Stamina>()?.addStamina(staminaToAdd);
     }
