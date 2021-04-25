@@ -6,9 +6,10 @@ public class ItemCollect : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player")){
+        if(other.gameObject.CompareTag("Player"))
+        {
+            GetComponent<IStatsModifier>().addToCharacter(other.gameObject);
             gameObject.SetActive(false);
-            //inject effect onto Player components
         }
     }
 }
