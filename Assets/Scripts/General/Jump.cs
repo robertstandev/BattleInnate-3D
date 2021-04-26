@@ -15,7 +15,8 @@ public class Jump : MonoBehaviour
 
     public void jump()
     {
-        if(jumpCounter < maxJumps){
+        if(jumpCounter < maxJumps)
+        {
             jumpCounter += 1;
             rb.AddForce(jumpVector3 * jumpPower);
         }
