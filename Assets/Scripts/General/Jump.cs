@@ -13,10 +13,11 @@ public class Jump : MonoBehaviour
 
     private void Awake() { rb = GetComponent<Rigidbody>(); }
 
-    public void jump()
+    public void jump(Stamina staminaComponent, int staminaToConsume)
     {
-        if(jumpCounter < maxJumps)
+        if((jumpCounter < maxJumps) && (staminaComponent.getCurrentStamina() > staminaToConsume))
         {
+            staminaComponent.substractStamina(staminaToConsume);
             jumpCounter += 1;
             rb.AddForce(jumpVector3 * jumpPower);
         }
