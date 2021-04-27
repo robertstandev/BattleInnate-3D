@@ -15,7 +15,7 @@ public class Jump : MonoBehaviour
 
     public void jump(Stamina staminaComponent, int staminaToConsume)
     {
-        if((jumpCounter < maxJumps) && (staminaComponent.getCurrentStamina() > staminaToConsume))
+        if((jumpCounter < maxJumps) && (staminaComponent.getCurrentStamina() >= staminaToConsume))
         {
             staminaComponent.substractStamina(staminaToConsume);
             jumpCounter += 1;
