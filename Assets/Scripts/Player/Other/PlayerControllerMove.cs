@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Movement))]
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerControllerMove : MonoBehaviour
 {   
     private InputAction movementInput;
     private Movement movementComponent;
+    private Rigidbody rb;
 
     private void Awake()
     {
@@ -16,18 +18,13 @@ public class PlayerControllerMove : MonoBehaviour
         movementInput.canceled += ctx => OnMove(ctx);
 
         movementComponent = GetComponent<Movement>();
+        rb = GetComponent<Rigidbody>();
     }
 
-    private void OnEnable()
-    { 
-        movementInput.Enable(); 
-        movementComponent.enabled = true;
-    }
-    private void OnDisable() 
-    { 
-        movementInput.Disable();
-        movementComponent.enabled = false;
-    }
+    private void OnEnable() { movementInput.Enable(); }
+    private void OnDisable() { movementInput.Disable(); }
 
-    private void OnMove(InputAction.CallbackContext context) { movementComponent.moveCharacter(context.ReadValue<Vector2>()); }
+    private void FixedUpdate() { movementComponent.moveCharacter(rb); }
+
+    private void OnMove(InputAction.CallbackContext context) { movementComponent.changeMovementData(context.ReadValue<Vector2>()); }
 }
