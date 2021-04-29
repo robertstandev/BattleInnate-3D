@@ -18,4 +18,8 @@ public class Jump : MonoBehaviour
             rb.AddForce(jumpVector3 * jumpPower);
         }
     }
+
+    public void setJumpCounter(int value) { this.jumpCounter = value < maxJumps ? value : this.jumpCounter; }
+
+    public int getJumpCounter() { return this.jumpCounter; }
 }
