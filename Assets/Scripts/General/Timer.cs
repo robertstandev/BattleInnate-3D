@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -17,8 +17,9 @@ public class Timer : MonoBehaviour
     }
 
     private IEnumerator timer(float waitTime, Action method){
+        WaitForSeconds wait = new WaitForSeconds(waitTime);
         while(true){
-            yield return new WaitForSeconds(waitTime);
+            yield return wait;
             method?.Invoke();
         }
     }
