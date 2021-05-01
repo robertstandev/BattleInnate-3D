@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,8 +10,9 @@ public class AutoHide : MonoBehaviour
 
     private void Awake() { timerComponent = GetComponent<Timer>(); }
 
-    private void OnEnable() {
-        hideTimerInstance = timerComponent.createTimerInstanceAndGetIndex(hideAfterNrOfSeconds, hide);
+    private void OnEnable()
+    {
+        hideTimerInstance = timerComponent.createTimerInstanceAndGetIndex(false, hideAfterNrOfSeconds, hide);
         timerComponent.startTimer(hideTimerInstance);
     }
 
