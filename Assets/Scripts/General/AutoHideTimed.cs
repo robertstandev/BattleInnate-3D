@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AutoHide : MonoBehaviour
+public class AutoHideTimed : MonoBehaviour
 {
    [SerializeField]private float hideAfterNrOfSeconds = 10f;
     private Timer timerComponent;
