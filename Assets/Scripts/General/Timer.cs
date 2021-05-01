@@ -10,17 +10,24 @@ public class Timer : MonoBehaviour
     public void startTimer(int index) { StartCoroutine(timersList[index]); }
     public void stopTimer(int index) { StopCoroutine(timersList[index]); }
     
-    public int createTimerInstanceAndGetIndex(float waitTime, Action method)
+    public int createTimerInstanceAndGetIndex(bool repeatCoroutine,float waitTime, Action method)
     {
-        timersList.Add(timer(waitTime, method));
+        timersList.Add(timer(repeatCoroutine, waitTime, method));
         return timersList.Count - 1;
     }
 
-    private IEnumerator timer(float waitTime, Action method){
+    private IEnumerator timer(bool repeatCoroutine, float waitTime, Action method){
         WaitForSeconds wait = new WaitForSeconds(waitTime);
+        
         while(true){
+            
             yield return wait;
+            
             method?.Invoke();
+            
+            if(!repeatCoroutine){
+                yield break;
+            }
         }
     }
 }
