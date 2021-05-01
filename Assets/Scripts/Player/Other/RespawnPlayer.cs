@@ -1,8 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RespawnPlayer : MonoBehaviour , IRespawn
+public class RespawnPlayer : MonoBehaviour , IOnTriggerAction
 {
     [SerializeField]private Vector3 position;
     [SerializeField]private Quaternion rotation;
@@ -17,7 +17,7 @@ public class RespawnPlayer : MonoBehaviour , IRespawn
         controllerJumpComponent = GetComponent<PlayerControllerJump>();
     }
 
-    public void respawn()
+    public void doAction()
     {
         resetComponents();
         changePositionAndRotation();
