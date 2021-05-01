@@ -1,10 +1,10 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PhysicsActivation : MonoBehaviour
 {
-    [SerializeField]private float activateGravityAfterSec = 3f;
+    [SerializeField]private float activateGravityAfterSec = 2f;
     private Rigidbody rbComponent;
     private Timer timerComponent;
     private int activateGravityTimerInstance;
@@ -15,7 +15,7 @@ public class PhysicsActivation : MonoBehaviour
         rbComponent = GetComponent<Rigidbody>();
     }
     
-    private void OnEnable() { activateGravityTimerInstance = timerComponent.createTimerInstanceAndGetIndex(activateGravityAfterSec, activateGravity); }
+    private void OnEnable() { activateGravityTimerInstance = timerComponent.createTimerInstanceAndGetIndex(false,activateGravityAfterSec, activateGravity); }
 
     private void OnDisable() { timerComponent.stopTimer(activateGravityTimerInstance); }
 
@@ -27,7 +27,8 @@ public class PhysicsActivation : MonoBehaviour
         }
     }
 
-    private void activateGravity(){
+    private void activateGravity()
+    {
         rbComponent.isKinematic = false;
         rbComponent.useGravity = true;
     }
