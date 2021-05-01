@@ -20,11 +20,8 @@ public class Timer : MonoBehaviour
         WaitForSeconds wait = new WaitForSeconds(waitTime);
         
         while(true){
-            
             yield return wait;
-            
             method?.Invoke();
-            
             if(!repeatCoroutine){
                 yield break;
             }
