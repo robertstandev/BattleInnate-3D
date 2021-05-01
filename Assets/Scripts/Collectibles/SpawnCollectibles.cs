@@ -18,10 +18,10 @@ public class SpawnCollectibles : MonoBehaviour
 
     private void OnEnable()
     {
-        spawnTimerInstance = timerComponent.createTimerInstanceAndGetIndex(Random.Range(minIntervalSpawn, maxIntervalSpawn), startCollectibleCreation);
+        spawnTimerInstance = timerComponent.createTimerInstanceAndGetIndex(true, Random.Range(minIntervalSpawn, maxIntervalSpawn), startCollectibleCreation);
         timerComponent.startTimer(spawnTimerInstance);
     }
-    
+
     private void OnDisable() { timerComponent.stopTimer(spawnTimerInstance); }
 
     private void startCollectibleCreation()
