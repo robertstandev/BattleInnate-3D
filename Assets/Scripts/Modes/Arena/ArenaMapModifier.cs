@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +13,7 @@ public class ArenaMapModifier : MonoBehaviour
 
     private void OnEnable()
     { 
-        mapModifierTimerInstance = timerComponent.createTimerInstanceAndGetIndex(0.5f, scaleMap);
+        mapModifierTimerInstance = timerComponent.createTimerInstanceAndGetIndex(true, 0.5f, scaleMap);
         timerComponent.startTimer(mapModifierTimerInstance);
     }
 
