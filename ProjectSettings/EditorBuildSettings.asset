@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: ff9a4a720878b23ae9856e6d709a0b5e
+  - enabled: 1
+    path: Assets/Scenes/Arena.unity
+    guid: da4d9e8bcb37cba459b57625fafeedc2
+  - enabled: 1
+    path: Assets/Scenes/Bowling.unity
+    guid: c77760d5c4c9c2d51baf4cc9d78c89a3
+  - enabled: 1
+    path: Assets/Scenes/Maze.unity
+    guid: 448ea92b221bc42c68f0033a77590a69
+  - enabled: 1
+    path: Assets/Scenes/Race.unity
+    guid: 4879932a8f5953010b32b0f2f3a4604c
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 78a20d401865d549e99b523bf0029c0e,
+      type: 2}
