@@ -1,3 +1,3 @@
 # BattleInnate-3D
 
-3D multiplatform fast paced game.
+3D multi mode game
