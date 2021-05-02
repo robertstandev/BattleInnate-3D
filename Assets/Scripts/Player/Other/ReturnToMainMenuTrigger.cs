@@ -4,16 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ReturnToMainMenuTrigger : MonoBehaviour , IOnTriggerAction
-{
-    private Timer timerComponent;
-    private int returnToMainMenuTimerInstance;
-
-    private void Awake() { timerComponent = GetComponent<Timer>(); }
-    
+{   
     public void doAction()
     { 
-        returnToMainMenuTimerInstance = timerComponent.createTimerInstanceAndGetIndex(false, 3f, returnToMainMenu);
-        timerComponent.startTimer(returnToMainMenuTimerInstance);
+        Invoke("returnToMainMenu", 3f);
         
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         GetComponent<Renderer>().enabled = false;

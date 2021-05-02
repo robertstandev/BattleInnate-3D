@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,20 +9,15 @@ public class SpawnCollectibles : MonoBehaviour
     [SerializeField]private float minIntervalSpawn = 10f;
     [SerializeField]private float maxIntervalSpawn = 30f;
     [SerializeField]private Transform ground;
-    private Timer timerComponent;
-    private int spawnTimerInstance;
     private int selectedCollectibleIndex;
     private GameObject selectedCollectibleGameObject;
 
-    private void Awake() { timerComponent = GetComponent<Timer>(); }
-
     private void OnEnable()
     {
-        spawnTimerInstance = timerComponent.createTimerInstanceAndGetIndex(true, Random.Range(minIntervalSpawn, maxIntervalSpawn), startCollectibleCreation);
-        timerComponent.startTimer(spawnTimerInstance);
+        InvokeRepeating("startCollectibleCreation", 10f, Random.Range(minIntervalSpawn, maxIntervalSpawn));
     }
 
-    private void OnDisable() { timerComponent.stopTimer(spawnTimerInstance); }
+    private void OnDisable() { CancelInvoke(); }
 
     private void startCollectibleCreation()
     {
