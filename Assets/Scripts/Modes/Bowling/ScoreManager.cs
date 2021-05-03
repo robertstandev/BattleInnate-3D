@@ -13,7 +13,7 @@ public class ScoreManager : MonoBehaviour, IOnTriggerAction
 	public void doAction()
 	{
 		textComponent.text = "Waiting for pins physics...";
-		Invoke("checkPinsAndDisplayScore", 6f);
+		Invoke("checkPinsAndDisplayScore", 5f);
 	}
 
 	private void checkPinsAndDisplayScore()
