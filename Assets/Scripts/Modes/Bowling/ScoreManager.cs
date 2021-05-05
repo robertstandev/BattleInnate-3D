@@ -10,10 +10,10 @@ public class ScoreManager : MonoBehaviour, IOnTriggerAction
 	private int score;
 	private Vector3 rotationInEuler;
 
-	public void doAction()
+	public void activateTriggerEvent(GameObject triggeredObject)
 	{
 		textComponent.text = "Waiting for pins physics...";
-		Invoke("checkPinsAndDisplayScore", 5f);
+		Invoke("checkPinsAndDisplayScore", 4f);
 	}
 
 	private void checkPinsAndDisplayScore()
@@ -46,4 +46,6 @@ public class ScoreManager : MonoBehaviour, IOnTriggerAction
 			}
 		}
 	}
+
+	public int getScore() { return this.score; }
 }
