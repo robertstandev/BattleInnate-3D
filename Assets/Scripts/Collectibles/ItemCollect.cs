@@ -6,10 +6,7 @@ public class ItemCollect : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.GetComponent<Health>() != null)
-        {
-            GetComponent<IStatsModifier>().modifyStats(other.gameObject);
-            gameObject.SetActive(false);
-        }
+        GetComponent<IOnTriggerAction>()?.activateTriggerEvent(other.gameObject);
+        gameObject.SetActive(false);
     }
 }

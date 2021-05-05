@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StaminaStatsModifier : MonoBehaviour , IStatsModifier
+public class StaminaStatsModifier : MonoBehaviour , IOnTriggerAction
 {
     [SerializeField]private int staminaToAdd = 50;
     
-    public void modifyStats(GameObject player)
+    public void activateTriggerEvent(GameObject player)
     {
         player.GetComponent<Stamina>()?.addStamina(staminaToAdd);
     }
