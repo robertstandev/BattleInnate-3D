@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public int currentHealth = 100;
+    private int currentHealth = 100;
 
     public void addHealth(int value) { this.currentHealth = (this.currentHealth + value) <= 100 ? this.currentHealth + value : 100; }
 

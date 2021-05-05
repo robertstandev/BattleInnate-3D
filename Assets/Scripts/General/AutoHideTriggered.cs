@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class AutoHideTriggered : MonoBehaviour , IOnTriggerAction
 {
-    public void doAction() { gameObject.SetActive(false); }
+    public void activateTriggerEvent(GameObject triggeredObject) { gameObject.SetActive(false); }
 }

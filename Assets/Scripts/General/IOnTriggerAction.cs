@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IOnTriggerAction
 {
-    void doAction();
+    void activateTriggerEvent(GameObject triggeredObject);
 }
