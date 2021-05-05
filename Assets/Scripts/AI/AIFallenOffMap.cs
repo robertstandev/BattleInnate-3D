@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIFallenOffMap : MonoBehaviour, IOnTriggerAction
+public class AIFallenOffMap : MonoBehaviour, IFallenOffMap
 {
     private Vector3 startupPosition;
     private Quaternion startupRotation;
@@ -14,7 +14,7 @@ public class AIFallenOffMap : MonoBehaviour, IOnTriggerAction
         startupRotation = transform.rotation;
     }
 
-    public void doAction()
+    public void doFallenAction()
     {
         respawn();
     }
