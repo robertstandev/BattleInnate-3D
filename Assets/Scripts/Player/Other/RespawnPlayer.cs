@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RespawnPlayer : MonoBehaviour , IOnTriggerAction
+public class RespawnPlayer : MonoBehaviour
 {
     [SerializeField]private Vector3 position;
     [SerializeField]private Quaternion rotation;
@@ -17,7 +17,7 @@ public class RespawnPlayer : MonoBehaviour , IOnTriggerAction
         controllerJumpComponent = GetComponent<PlayerControllerJump>();
     }
 
-    public void doAction()
+    public void respawn()
     {
         resetComponents();
         changePositionAndRotation();
@@ -25,11 +25,10 @@ public class RespawnPlayer : MonoBehaviour , IOnTriggerAction
 
     private void changePositionAndRotation() { transform.SetPositionAndRotation(position , rotation); }
 
+    public void stopRigidbody() { rb.constraints = RigidbodyConstraints.FreezeAll; }
+
     private void resetComponents()
     {
-        rb.velocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
-
         if(controllerMoveComponent != null)
         {
             controllerMoveComponent.enabled = true;
@@ -39,6 +38,6 @@ public class RespawnPlayer : MonoBehaviour , IOnTriggerAction
         {
             controllerJumpComponent.enabled = true;
         }
-
+        rb.constraints = RigidbodyConstraints.None;
     }
 }

@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class FallenOffMap : MonoBehaviour , IOnTriggerAction
+public class FallenOffMap : MonoBehaviour , IFallenOffMap
 {
     [SerializeField]private Text textComponent;
 
-    public void doAction()
+    public void doFallenAction()
     { 
         Invoke("returnToMainMenu", 3f);
         
@@ -19,5 +18,5 @@ public class FallenOffMap : MonoBehaviour , IOnTriggerAction
         textComponent.enabled = true;
     }
 
-    private void returnToMainMenu() { SceneManager.LoadSceneAsync(0, LoadSceneMode.Single); }
+    private void returnToMainMenu() { transform.GetComponent<ScenesManager>().returnToMainMenu(); }
 }
