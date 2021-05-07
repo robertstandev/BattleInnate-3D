@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,15 +6,9 @@ public class OnTriggerAction : MonoBehaviour
 {
     private IOnTriggerAction[] onTriggerActionScripts;
 
-    private void Awake()
-    {
-        onTriggerActionScripts = GetComponents<IOnTriggerAction>();
-    }
+    private void Awake() { onTriggerActionScripts = GetComponents<IOnTriggerAction>(); }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        sendTriggeredObjectToScripts(other.gameObject);
-    }
+    private void OnTriggerEnter(Collider other) { sendTriggeredObjectToScripts(other.gameObject); }
 
     private void sendTriggeredObjectToScripts(GameObject triggeredObject)
     {
