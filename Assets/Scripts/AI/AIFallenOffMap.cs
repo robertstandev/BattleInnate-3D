@@ -14,10 +14,7 @@ public class AIFallenOffMap : MonoBehaviour, IFallenOffMap
         startupRotation = transform.rotation;
     }
 
-    public void doFallenAction()
-    {
-        respawn();
-    }
+    public void doFallenAction() { respawn(); }
 
     private void respawn()
     {

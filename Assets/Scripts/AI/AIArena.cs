@@ -30,7 +30,7 @@ public class AIArena : MonoBehaviour
         currentTarget = target();
         if(!isAvailable(currentTarget))
         {
-            return findLocation();
+            return player.transform.position;
         }
         else
         {
@@ -47,16 +47,9 @@ public class AIArena : MonoBehaviour
         movementComponent.moveCharacter(rb);
     }
 
-    private Vector3 findLocation()
-    {
-        return new Vector3( Random.Range(ground.position.x - ((ground.localScale.x / 2) - 1), ground.position.x + ((ground.localScale.x / 2) - 1))
-                            , 0.5f
-                            , Random.Range(ground.position.z - ((ground.localScale.y / 2) - 1), ground.position.z + ((ground.localScale.y / 2) - 1)));
-    }
-
    private GameObject target()
    {
-        if (healthComponent.getCurrentHealth() > 20)
+        if (healthComponent.getCurrentHealth() == 100)
         {
            return player;
         }
