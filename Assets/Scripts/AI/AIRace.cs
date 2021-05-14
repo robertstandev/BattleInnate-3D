@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,11 +12,13 @@ public class AIRace : MonoBehaviour
     private Rigidbody rb;
     private Renderer charRenderer;
 
-    [SerializeField]private float distanceForObstacleCheck = 50f;
+    [SerializeField]private float frontObstacleDistanceCheck = 65f;
+    [SerializeField]private float sideObstacleDistanceCheck = 1f;
     private RaycastHit obstacleRaycastHit;
     private Vector3 obstaclePositionCheck;
     private Vector3 obstacleCheckBoxSize;
 
+    private Vector2 movementData;
     private bool canMakeDecision = true;
 
     private void Awake()
@@ -34,9 +36,9 @@ public class AIRace : MonoBehaviour
     {
         if(canMakeDecision)
         {
-            makeDecision();
+            checkFrontCollision();
+            movementComponent.changeMovementData(movementData);
         }
-
         movementComponent.moveCharacter(rb);
     }
 
@@ -57,46 +59,52 @@ public class AIRace : MonoBehaviour
 
         obstaclePositionCheck = transform.position;
         obstaclePositionCheck.y += raycastHeight;
-        obstaclePositionCheck.z -= obstacleCheckBoxSize.z - objectRenderer.bounds.extents.z - 0.1f;
+        obstaclePositionCheck.z -= obstacleCheckBoxSize.z - objectRenderer.bounds.extents.z - 0.3f;
 
         return Physics.BoxCast(obstaclePositionCheck, obstacleCheckBoxSize, boxCastDirection, out obstacleRaycastHit, Quaternion.identity, obstacleCheckBoxSize.z);
     }
 
-    private void makeDecision()
+    private void checkFrontCollision()
     {
-        //Rewrite it cleaner
+        movementData = Vector2.zero;
 
-        if(isObjectDetected(charRenderer, 0f, Vector3.forward, distanceForObstacleCheck) && !isObjectDetected(charRenderer, 3f, Vector3.forward, distanceForObstacleCheck) && staminaComponent.getCurrentStamina() > 9)
-        {//is small obstacle and has 10 stamina for jump
+        if(isObjectDetected(charRenderer, 1f, Vector3.forward, frontObstacleDistanceCheck) && !isObjectDetected(charRenderer, 3f, Vector3.forward, frontObstacleDistanceCheck) && staminaComponent.getCurrentStamina() > 9)
+        {
             jumpComponent.jump(rb, staminaComponent , 10);
-            movementComponent.changeMovementData(new Vector2(0f, 1f));
+            movementData.y = 1f;
+            canMakeDecision = false;
         }
-        else if(isObjectDetected(charRenderer, 3f, Vector3.forward, distanceForObstacleCheck) && !isObjectDetected(charRenderer, 6f, Vector3.forward, distanceForObstacleCheck) && staminaComponent.getCurrentStamina() > 19)
-        {//is medium obstacle and has 20 stamina for 2 jumps
+        else if(isObjectDetected(charRenderer, 3f, Vector3.forward, frontObstacleDistanceCheck) && !isObjectDetected(charRenderer, 6f, Vector3.forward, frontObstacleDistanceCheck) && staminaComponent.getCurrentStamina() > 19)
+        {
             jumpComponent.jump(rb, staminaComponent , 10);
             jumpComponent.jump(rb, staminaComponent , 10);
-            movementComponent.changeMovementData(new Vector2(0f, 1f));
+            movementData.y = 1f;
+            canMakeDecision = false;
         }
-        else if(isObjectDetected(charRenderer, 6f, Vector3.forward, distanceForObstacleCheck) || isObjectDetected(charRenderer, 0f, Vector3.forward, distanceForObstacleCheck) && staminaComponent.getCurrentStamina() < 10 || isObjectDetected(charRenderer, 3f, Vector3.forward, distanceForObstacleCheck) && staminaComponent.getCurrentStamina() < 20)
-        {//is either high obstacle or small/medium obstacle and not enough stamina
-            if(isObjectDetected(charRenderer, 0f, Vector3.left, 1f))
-            {//is obstacle to the left
-                movementComponent.changeMovementData(new Vector2(1f, 0.1f));
-            }
-            else if(isObjectDetected(charRenderer, 0f, Vector3.right, 1f))
-            {//is obstacle to the right
-                movementComponent.changeMovementData(new Vector2(-1f, 0.1f));
-            }
-            else
-            {//no obstacle to the right or left but still is either high obstacle or small/medium obstacle in front and not enough stamina
-                movementComponent.changeMovementData(new Vector2(0.1f, 0.1f));
-            }
+        else if(isObjectDetected(charRenderer, 6f, Vector3.forward, frontObstacleDistanceCheck) || isObjectDetected(charRenderer, 1f, Vector3.forward, frontObstacleDistanceCheck) && staminaComponent.getCurrentStamina() < 10 || isObjectDetected(charRenderer, 3f, Vector3.forward, frontObstacleDistanceCheck) && staminaComponent.getCurrentStamina() < 20)
+        {
+           checkLateralCollision();
         }
         else
         {
-            movementComponent.changeMovementData(new Vector2(0f, 1f));
+            movementData.y = 1f;
         }
+    }
 
-        canMakeDecision = false;
+    private void checkLateralCollision()
+    {
+         if(isObjectDetected(charRenderer, 1f, Vector3.left, sideObstacleDistanceCheck))
+        {
+            movementData.x = 1f;
+        }
+        else if(isObjectDetected(charRenderer, 1f, Vector3.right, sideObstacleDistanceCheck))
+        {
+            movementData.x = -1f;
+        }
+        else
+        {
+            movementData.x = 1f;
+        }
+        movementData.y = 1f;
     }
 }
