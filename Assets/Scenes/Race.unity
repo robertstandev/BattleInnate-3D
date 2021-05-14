@@ -1897,8 +1897,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 139367509}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 28.867779, y: -24.309036, z: 2525.7017}
-  m_LocalScale: {x: 1.5, y: 25, z: 5000.001}
+  m_LocalPosition: {x: 28.867779, y: 212, z: 2525.7017}
+  m_LocalScale: {x: 1.5, y: 500, z: 5000.001}
   m_Children: []
   m_Father: {fileID: 1872894761}
   m_RootOrder: 3
@@ -8311,8 +8311,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 486766452}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.867778, y: -24.309036, z: 2525.7017}
-  m_LocalScale: {x: 1.5, y: 25, z: 5000.001}
+  m_LocalPosition: {x: 8.867778, y: 212, z: 2525.7017}
+  m_LocalScale: {x: 1.5, y: 500, z: 5000.001}
   m_Children: []
   m_Father: {fileID: 1872894761}
   m_RootOrder: 2
@@ -17500,8 +17500,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081118846}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.132222, y: -24.309036, z: 2525.7017}
-  m_LocalScale: {x: 1.5, y: 25, z: 5000.001}
+  m_LocalPosition: {x: -11.132222, y: 212, z: 2525.7017}
+  m_LocalScale: {x: 1.5, y: 500, z: 5000.001}
   m_Children: []
   m_Father: {fileID: 1872894761}
   m_RootOrder: 1
@@ -19579,8 +19579,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1283519640}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -31.132225, y: -24.309036, z: 2525.7017}
-  m_LocalScale: {x: 1.5, y: 25, z: 5000.001}
+  m_LocalPosition: {x: -31.132225, y: 212, z: 2525.7017}
+  m_LocalScale: {x: 1.5, y: 500, z: 5000.001}
   m_Children: []
   m_Father: {fileID: 1872894761}
   m_RootOrder: 0
@@ -34342,7 +34342,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c59ea5b5d47320faffa454a384d38e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceForObstacleCheck: 65
+  frontObstacleDistanceCheck: 65
+  sideObstacleDistanceCheck: 1
 --- !u!114 &578065352436502953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34457,7 +34458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71b5bdf629055e7a18344c23f52eba49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 10
+  movementSpeed: 8
 --- !u!1 &578065352983569510
 GameObject:
   m_ObjectHideFlags: 0
@@ -34508,7 +34509,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c59ea5b5d47320faffa454a384d38e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceForObstacleCheck: 65
+  frontObstacleDistanceCheck: 65
+  sideObstacleDistanceCheck: 1
 --- !u!114 &578065352983569513
 MonoBehaviour:
   m_ObjectHideFlags: 0
