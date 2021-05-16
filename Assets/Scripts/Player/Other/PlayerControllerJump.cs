@@ -34,7 +34,7 @@ public class PlayerControllerJump : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(checkSurroundingsComponent.isGrounded(charRenderer))
+        if(checkSurroundingsComponent.isColliding(new Vector3(0f,-0.1f,0f), charRenderer, 0.2f, Vector3.down))
         {
             jumpComponent.setJumpCounter(1);
         }

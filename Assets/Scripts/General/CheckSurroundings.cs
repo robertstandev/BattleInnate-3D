@@ -4,17 +4,33 @@ using UnityEngine;
 
 public class CheckSurroundings : MonoBehaviour
 {
-    private RaycastHit groundCheckBoxTrigger;
-    private Vector3 groundCheckBoxPositionStart;
-    private Vector3 groundCheckBoxSize = new Vector3(0f, 0.2f , 0f);
+    private RaycastHit boxCastRaycastHit;
+    private Vector3 boxCastPositionCheck;
+    private Vector3 boxCastCheckBoxSize;
 
-    public bool isGrounded(Renderer characterRenderer){
-        groundCheckBoxSize.x = characterRenderer.bounds.size.x;
-        groundCheckBoxSize.z = characterRenderer.bounds.size.z;
+    public bool isColliding(Vector3 boxCastPositionOvverider, Renderer objectRenderer, float distanceCheck, Vector3 boxCastDirection)
+    {
+        boxCastPositionCheck = transform.position + boxCastPositionOvverider;
+        boxCastCheckBoxSize = objectRenderer.bounds.extents;
 
-        groundCheckBoxPositionStart = transform.position;
-        groundCheckBoxPositionStart.y -= characterRenderer.bounds.extents.y - 0.4f;
-        
-        return Physics.BoxCast(groundCheckBoxPositionStart, groundCheckBoxSize, Vector3.down, out groundCheckBoxTrigger,Quaternion.identity, groundCheckBoxSize.y);
+        boxCastCheckBoxBuilder(boxCastDirection, distanceCheck);
+
+        return Physics.BoxCast(boxCastPositionCheck, boxCastCheckBoxSize, boxCastDirection, out boxCastRaycastHit, Quaternion.identity, distanceCheck);
+    }
+
+    private void boxCastCheckBoxBuilder(Vector3 boxCastDirection, float distanceCheck)
+    {
+        if(boxCastDirection == Vector3.left || boxCastDirection == Vector3.right)
+        {
+             boxCastCheckBoxSize.x = distanceCheck;
+        }
+        else if(boxCastDirection == Vector3.down || boxCastDirection == Vector3.up)
+        {
+            boxCastCheckBoxSize.y = distanceCheck;
+        }
+        else
+        {
+            boxCastCheckBoxSize.z = distanceCheck;
+        }
     }
 }
