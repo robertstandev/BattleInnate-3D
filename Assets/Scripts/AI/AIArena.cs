@@ -1,10 +1,10 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AIArena : MonoBehaviour
 {
-    [SerializeField]private Transform healthGroup;
+    [SerializeField]private Transform healthCollectiblesGroup;
     [SerializeField]private Transform ground;
     private Movement movementComponent;
     private Health healthComponent;
@@ -55,7 +55,7 @@ public class AIArena : MonoBehaviour
         }
         else
         {
-           return returnHealthAvailable();
+           return returnHealthCollectiblesAvailable();
         }
    }
 
@@ -68,13 +68,13 @@ public class AIArena : MonoBehaviour
         return false;
    }
 
-   private GameObject returnHealthAvailable()
+   private GameObject returnHealthCollectiblesAvailable()
    {
-       for (int i = 0 ; i < healthGroup.childCount ; i++)
+       for (int i = 0 ; i < healthCollectiblesGroup.childCount ; i++)
        {
-           if(isAvailable(healthGroup.GetChild(i).gameObject))
+           if(isAvailable(healthCollectiblesGroup.GetChild(i).gameObject))
            {
-               return healthGroup.GetChild(i).gameObject;
+               return healthCollectiblesGroup.GetChild(i).gameObject;
            }
        }
        return null;
