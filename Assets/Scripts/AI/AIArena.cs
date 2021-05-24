@@ -41,8 +41,8 @@ public class AIArena : MonoBehaviour
 
     private void moveToTarget(Vector3 locationToGo)
     {
-        movementData.x = locationToGo.x > transform.position.x ? 1.0f : locationToGo.x < transform.position.x ? -1.0f : 0.0f;
-        movementData.y = locationToGo.z > transform.position.z ? 1.0f : locationToGo.z < transform.position.x ? -1.0f : 0.0f;  
+        movementData.x = locationToGo.x > transform.position.x ? 1f : locationToGo.x < transform.position.x ? -1f : 0f;
+        movementData.y = locationToGo.z > transform.position.z ? 1f : locationToGo.z < transform.position.z ? -1f : 0f;  
 
         movementComponent.changeMovementData(movementData);
         movementComponent.moveCharacter(rb);
