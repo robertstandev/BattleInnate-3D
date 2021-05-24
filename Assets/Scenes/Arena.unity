@@ -339,7 +339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcd28f56824e1404497a0bb54e9fa051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthGroup: {fileID: 1298249417}
+  healthCollectiblesGroup: {fileID: 1298249417}
   ground: {fileID: 6580880493763892273}
 --- !u!54 &411386922
 Rigidbody:
@@ -1333,7 +1333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1298249417}
   m_Layer: 0
-  m_Name: HealthGroup
+  m_Name: HealthCollectiblesGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1462,7 +1462,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1467711306}
   m_Layer: 0
-  m_Name: StaminaGroup
+  m_Name: StaminaCollectiblesGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2098,7 +2098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcd28f56824e1404497a0bb54e9fa051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthGroup: {fileID: 1298249417}
+  healthCollectiblesGroup: {fileID: 1298249417}
   ground: {fileID: 6580880493763892273}
 --- !u!114 &1676572442
 MonoBehaviour:
