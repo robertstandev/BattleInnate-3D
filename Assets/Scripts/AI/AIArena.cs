@@ -21,7 +21,8 @@ public class AIArena : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-   private void FixedUpdate() {
+   private void FixedUpdate()
+   {
        moveToTarget(doDecision());
    }
 
