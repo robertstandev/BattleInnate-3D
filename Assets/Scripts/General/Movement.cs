@@ -16,4 +16,6 @@ public class Movement : MonoBehaviour
     public void moveCharacter(Rigidbody rb){ rb.AddForce(movementVector3 * movementSpeed); }
 
     public void setMovementSpeed(float value) { this.movementSpeed = value; }
+
+    public float getMovementSpeed() { return this.movementSpeed; }
 }

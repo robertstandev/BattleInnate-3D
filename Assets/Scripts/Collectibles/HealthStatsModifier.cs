@@ -5,13 +5,15 @@ using UnityEngine;
 public class HealthStatsModifier : MonoBehaviour , IOnTriggerAction
 {
     [SerializeField]private int healthToAdd = 10;
-    [SerializeField]private int massModifier = 2;
-    [SerializeField]private int movementModifier = 20;
+    [SerializeField]private int massModifier = 20;
+    [SerializeField]private int movementModifier = 200;
+    [SerializeField]private int jumpModifier = 90;
 
     public void activateTriggerEvent(GameObject player)
     {
         player.GetComponent<Health>()?.addHealth(healthToAdd);
-        player.GetComponent<Rigidbody>().mass = (float) player.GetComponent<Health>()?.getCurrentHealth() * massModifier;
-        player.GetComponent<Movement>()?.setMovementSpeed((float) player.GetComponent<Health>()?.getCurrentHealth() * movementModifier);
+        player.GetComponent<Rigidbody>().mass += massModifier;
+        player.GetComponent<Movement>()?.setMovementSpeed(player.GetComponent<Movement>().getMovementSpeed() + movementModifier);
+        player.GetComponent<Jump>()?.setJumpPower(player.GetComponent<Jump>().getJumpPower() + jumpModifier);
     }
 }

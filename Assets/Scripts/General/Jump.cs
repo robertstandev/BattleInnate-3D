@@ -22,4 +22,8 @@ public class Jump : MonoBehaviour
     public void setJumpCounter(int value) { this.jumpCounter = value < maxJumps ? value : this.jumpCounter; }
 
     public int getJumpCounter() { return this.jumpCounter; }
+
+    public void setJumpPower(float value) { this.jumpPower = value; }
+
+    public float getJumpPower() { return this.jumpPower; }
 }

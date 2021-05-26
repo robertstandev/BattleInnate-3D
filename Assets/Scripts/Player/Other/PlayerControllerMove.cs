@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerControllerMove : MonoBehaviour
 {   
     private InputAction movementInput;
+
     private Movement movementComponent;
     private Rigidbody rb;
 

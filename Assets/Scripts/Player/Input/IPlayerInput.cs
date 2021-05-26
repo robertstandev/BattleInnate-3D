@@ -7,4 +7,5 @@ public interface IPlayerInput
 {
     InputAction getMovementInput { get; }
     InputAction getJumpInput { get; }
+    InputAction getMenuInput { get; }
 }
