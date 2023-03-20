@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -71,11 +71,11 @@ public class AIArena : MonoBehaviour
 
    private GameObject returnHealthCollectiblesAvailable()
    {
-       for (int i = 0 ; i < healthCollectiblesGroup.childCount ; i++)
+       for (int i = 0 ; i < this.healthCollectiblesGroup.childCount ; i++)
        {
            if(isAvailable(healthCollectiblesGroup.GetChild(i).gameObject))
            {
-               return healthCollectiblesGroup.GetChild(i).gameObject;
+               return this.healthCollectiblesGroup.GetChild(i).gameObject;
            }
        }
        return null;
