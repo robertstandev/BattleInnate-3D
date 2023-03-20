@@ -15,10 +15,10 @@ public class AIArena : MonoBehaviour
 
     private void Awake()
     {
-        movementComponent = GetComponent<Movement>();
-        healthComponent = GetComponent<Health>();
-        player = GameObject.FindGameObjectWithTag("Player");
-        rb = GetComponent<Rigidbody>();
+        this.movementComponent = GetComponent<Movement>();
+        this.healthComponent = GetComponent<Health>();
+        this.player = GameObject.FindGameObjectWithTag("Player");
+        this.rb = GetComponent<Rigidbody>();
     }
 
    private void FixedUpdate()
