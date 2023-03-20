@@ -28,14 +28,14 @@ public class AIArena : MonoBehaviour
 
     private Vector3 doDecision()
     {
-        currentTarget = target();
+        this.currentTarget = target();
         if(!isAvailable(currentTarget))
         {
-            return player.transform.position;
+            return this.player.transform.position;
         }
         else
         {
-            return currentTarget.transform.position; 
+            return this.currentTarget.transform.position; 
         }
     }
 
