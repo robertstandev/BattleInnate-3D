@@ -10,27 +10,27 @@ public class CheckSurroundings : MonoBehaviour
 
     public bool isColliding(Vector3 boxCastPositionOvverider, Renderer objectRenderer, float distanceCheck, Vector3 boxCastDirection)
     {
-        boxCastPositionCheck = transform.position + boxCastPositionOvverider;
-        boxCastCheckBoxSize = objectRenderer.bounds.extents;
+        this.boxCastPositionCheck = transform.position + boxCastPositionOvverider;
+        this.boxCastCheckBoxSize = objectRenderer.bounds.extents;
 
         boxCastCheckBoxBuilder(boxCastDirection, distanceCheck);
 
-        return Physics.BoxCast(boxCastPositionCheck, boxCastCheckBoxSize, boxCastDirection, out boxCastRaycastHit, Quaternion.identity, distanceCheck);
+        return Physics.BoxCast(this.boxCastPositionCheck, this.boxCastCheckBoxSize, boxCastDirection, out boxCastRaycastHit, Quaternion.identity, distanceCheck);
     }
 
     private void boxCastCheckBoxBuilder(Vector3 boxCastDirection, float distanceCheck)
     {
         if(boxCastDirection == Vector3.left || boxCastDirection == Vector3.right)
         {
-             boxCastCheckBoxSize.x = distanceCheck;
+             this.boxCastCheckBoxSize.x = distanceCheck;
         }
         else if(boxCastDirection == Vector3.down || boxCastDirection == Vector3.up)
         {
-            boxCastCheckBoxSize.y = distanceCheck;
+            this.boxCastCheckBoxSize.y = distanceCheck;
         }
         else
         {
-            boxCastCheckBoxSize.z = distanceCheck;
+            this.boxCastCheckBoxSize.z = distanceCheck;
         }
     }
 }
