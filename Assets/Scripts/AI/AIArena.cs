@@ -29,7 +29,7 @@ public class AIArena : MonoBehaviour
     private Vector3 doDecision()
     {
         this.currentTarget = target();
-        if(!isAvailable(currentTarget))
+        if(!isAvailable(this.currentTarget))
         {
             return this.player.transform.position;
         }
@@ -44,15 +44,15 @@ public class AIArena : MonoBehaviour
         this.movementData.x = locationToGo.x > transform.position.x ? 1f : locationToGo.x < transform.position.x ? -1f : 0f;
         this.movementData.y = locationToGo.z > transform.position.z ? 1f : locationToGo.z < transform.position.z ? -1f : 0f;  
 
-        this.movementComponent.changeMovementData(movementData);
-        this.movementComponent.moveCharacter(rb);
+        this.movementComponent.changeMovementData(this.movementData);
+        this.movementComponent.moveCharacter(this.rb);
     }
 
    private GameObject target()
    {
-        if (healthComponent.getCurrentHealth() == 100)
+        if (this.healthComponent.getCurrentHealth() == 100)
         {
-           return player;
+           return this.player;
         }
         else
         {
@@ -73,7 +73,7 @@ public class AIArena : MonoBehaviour
    {
        for (int i = 0 ; i < this.healthCollectiblesGroup.childCount ; i++)
        {
-           if(isAvailable(healthCollectiblesGroup.GetChild(i).gameObject))
+           if(isAvailable(this.healthCollectiblesGroup.GetChild(i).gameObject))
            {
                return this.healthCollectiblesGroup.GetChild(i).gameObject;
            }
