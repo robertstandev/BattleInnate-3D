@@ -9,9 +9,9 @@ public class AIFallenOffMap : MonoBehaviour, IFallenOffMap
     private Rigidbody rb;
 
     private void Awake() {
-        rb = GetComponent<Rigidbody>();
-        startupPosition = transform.position;
-        startupRotation = transform.rotation;
+        this.rb = GetComponent<Rigidbody>();
+        this.startupPosition = transform.position;
+        this.startupRotation = transform.rotation;
     }
 
     public void doFallenAction() { respawn(); }
@@ -22,11 +22,11 @@ public class AIFallenOffMap : MonoBehaviour, IFallenOffMap
         resetRigidbody();
     }
 
-    private void changePositionAndRotation() { transform.SetPositionAndRotation(startupPosition , startupRotation); }
+    private void changePositionAndRotation() { transform.SetPositionAndRotation(this.startupPosition , this.startupRotation); }
 
     private void resetRigidbody()
     {
-        rb.velocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
+        this.rb.velocity = Vector3.zero;
+        this.rb.angularVelocity = Vector3.zero;
     }
 }
