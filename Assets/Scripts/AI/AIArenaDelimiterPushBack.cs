@@ -14,9 +14,9 @@ public class AIArenaDelimiterPushBack : MonoBehaviour, IOnTriggerAction
         }
         else
         {
-            rb = triggeredObject.GetComponent<Rigidbody>();
-            rb.angularVelocity = Vector3.zero;
-            rb.velocity = Vector3.zero;
+            this.rb = triggeredObject.GetComponent<Rigidbody>();
+            this.rb.angularVelocity = Vector3.zero;
+            this.rb.velocity = Vector3.zero;
         }
     }
 }
