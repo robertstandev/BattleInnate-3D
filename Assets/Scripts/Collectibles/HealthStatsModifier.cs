@@ -11,9 +11,9 @@ public class HealthStatsModifier : MonoBehaviour , IOnTriggerAction
 
     public void activateTriggerEvent(GameObject player)
     {
-        player.GetComponent<Health>()?.addHealth(healthToAdd);
-        player.GetComponent<Rigidbody>().mass += massModifier;
-        player.GetComponent<Movement>()?.setMovementSpeed(player.GetComponent<Movement>().getMovementSpeed() + movementModifier);
-        player.GetComponent<Jump>()?.setJumpPower(player.GetComponent<Jump>().getJumpPower() + jumpModifier);
+        player.GetComponent<Health>()?.addHealth(this.healthToAdd);
+        player.GetComponent<Rigidbody>().mass += this.massModifier;
+        player.GetComponent<Movement>()?.setMovementSpeed(player.GetComponent<Movement>().getMovementSpeed() + this.movementModifier);
+        player.GetComponent<Jump>()?.setJumpPower(player.GetComponent<Jump>().getJumpPower() + this.jumpModifier);
     }
 }
