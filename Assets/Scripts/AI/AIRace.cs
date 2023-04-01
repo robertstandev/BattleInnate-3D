@@ -18,56 +18,56 @@ public class AIRace : MonoBehaviour
 
     private void Awake()
     {
-        movementComponent = GetComponent<Movement>();
-        jumpComponent = GetComponent<Jump>();
-        staminaComponent = GetComponent<Stamina>();
-        checkSurroundingsComponent = GetComponent<CheckSurroundings>();
+        this.movementComponent = GetComponent<Movement>();
+        this.jumpComponent = GetComponent<Jump>();
+        this.staminaComponent = GetComponent<Stamina>();
+        this.checkSurroundingsComponent = GetComponent<CheckSurroundings>();
 
-        rb = GetComponent<Rigidbody>();
-        charRenderer = GetComponent<Renderer>();
+        this.rb = GetComponent<Rigidbody>();
+        this.charRenderer = GetComponent<Renderer>();
     }
 
     private void FixedUpdate()
     {
         checkFrontCollision();
         checkSideCollision();
-        movementComponent.changeMovementData(movementData);
-        movementComponent.moveCharacter(rb);
+        this.movementComponent.changeMovementData(this.movementData);
+        this.movementComponent.moveCharacter(this.rb);
     }
 
     private void LateUpdate()
     {
-        if(checkSurroundingsComponent.isColliding(new Vector3(0f,-0.1f,0f), charRenderer, 0.2f, Vector3.down))
+        if(this.checkSurroundingsComponent.isColliding(new Vector3(0f,-0.1f,0f), this.charRenderer, 0.2f, Vector3.down))
         {
-            jumpComponent.setJumpCounter(1);
+            this.jumpComponent.setJumpCounter(1);
         }
     }
 
     private void checkFrontCollision()
     {
-        if(checkSurroundingsComponent.isColliding(new Vector3(0f,0f, -1* frontObstacleDistanceCheck), charRenderer, frontObstacleDistanceCheck, Vector3.forward) && staminaComponent.getCurrentStamina() >= 10)
+        if(this.checkSurroundingsComponent.isColliding(new Vector3(0f,0f, -1* this.frontObstacleDistanceCheck), this.charRenderer, this.frontObstacleDistanceCheck, Vector3.forward) && this.staminaComponent.getCurrentStamina() >= 10)
         {
-            jumpComponent.jump(rb, staminaComponent , 5);
+            this.jumpComponent.jump(this.rb, this.staminaComponent , 5);
         }
-        movementData.y = 1f;
+        this.movementData.y = 1f;
     }
 
     private void checkSideCollision()
     {
-        movementData.x = 0f;
-        if(checkSurroundingsComponent.isColliding(new Vector3(0.6f,0f, -0.1f), charRenderer, 1f, Vector3.left))
+        this.movementData.x = 0f;
+        if(this.checkSurroundingsComponent.isColliding(new Vector3(0.6f,0f, -0.1f), this.charRenderer, 1f, Vector3.left))
         {
-            movementData.x = 1f;
+            this.movementData.x = 1f;
         }
-        else if(checkSurroundingsComponent.isColliding(new Vector3(-0.6f,0f, - 0.1f), charRenderer, 1f, Vector3.right))
+        else if(this.checkSurroundingsComponent.isColliding(new Vector3(-0.6f,0f, - 0.1f), this.charRenderer, 1f, Vector3.right))
         {
-            movementData.x = -1f;
+            this.movementData.x = -1f;
         }
         else
         {
-            if(checkSurroundingsComponent.isColliding(new Vector3(0f,0f, 0.2f), charRenderer, 0.2f, Vector3.forward))
+            if(this.checkSurroundingsComponent.isColliding(new Vector3(0f,0f, 0.2f), this.charRenderer, 0.2f, Vector3.forward))
             {
-                movementData.x = 1f;
+                this.movementData.x = 1f;
             }
         }
     }
