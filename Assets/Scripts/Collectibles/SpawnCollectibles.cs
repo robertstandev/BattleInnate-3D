@@ -14,41 +14,41 @@ public class SpawnCollectibles : MonoBehaviour
 
     private void OnEnable()
     {
-        InvokeRepeating("startCollectibleCreation", 10f, Random.Range(minIntervalSpawn, maxIntervalSpawn));
+        InvokeRepeating("startCollectibleCreation", 10f, Random.Range(this.minIntervalSpawn, this.maxIntervalSpawn));
     }
 
     private void OnDisable() { CancelInvoke(); }
 
     private void startCollectibleCreation()
     {
-        selectedCollectibleIndex = Random.Range(0, collectiblesTypes.Length);
+        this.selectedCollectibleIndex = Random.Range(0, this.collectiblesTypes.Length);
 
-        if(collectiblesGroupsParents[selectedCollectibleIndex].transform.childCount > 0)
+        if(this.collectiblesGroupsParents[this.selectedCollectibleIndex].transform.childCount > 0)
         {
             if(!isChildAvailable())
             {
-                selectedCollectibleGameObject = Instantiate(collectiblesTypes[selectedCollectibleIndex] , collectiblesGroupsParents[selectedCollectibleIndex].transform);
+                this.selectedCollectibleGameObject = Instantiate(this.collectiblesTypes[this.selectedCollectibleIndex] , this.collectiblesGroupsParents[this.selectedCollectibleIndex].transform);
             }
             else
             {
-                selectedCollectibleGameObject.SetActive(true);
+                this.selectedCollectibleGameObject.SetActive(true);
             }
         }
         else
         {
-            selectedCollectibleGameObject = Instantiate(collectiblesTypes[selectedCollectibleIndex] , collectiblesGroupsParents[selectedCollectibleIndex].transform);
+            this.selectedCollectibleGameObject = Instantiate(this.collectiblesTypes[this.selectedCollectibleIndex] , this.collectiblesGroupsParents[this.selectedCollectibleIndex].transform);
         }
 
-        selectedCollectibleGameObject.transform.position = findLocationForCollectible();
+        this.selectedCollectibleGameObject.transform.position = findLocationForCollectible();
     }
 
     private bool isChildAvailable()
     {
-        for (int i = 0; i < collectiblesGroupsParents[selectedCollectibleIndex].transform.childCount; i++)
+        for (int i = 0; i < this.collectiblesGroupsParents[this.selectedCollectibleIndex].transform.childCount; i++)
         {
-            if(!collectiblesGroupsParents[selectedCollectibleIndex].transform.GetChild(i).gameObject.activeInHierarchy)
+            if(!this.collectiblesGroupsParents[this.selectedCollectibleIndex].transform.GetChild(i).gameObject.activeInHierarchy)
             {
-                selectedCollectibleGameObject = collectiblesGroupsParents[selectedCollectibleIndex].transform.GetChild(i).gameObject;
+                this.selectedCollectibleGameObject = this.collectiblesGroupsParents[this.selectedCollectibleIndex].transform.GetChild(i).gameObject;
                 return true;
             }
         }
@@ -57,8 +57,8 @@ public class SpawnCollectibles : MonoBehaviour
 
     private Vector3 findLocationForCollectible()
     {
-        return new Vector3( Random.Range(ground.position.x - ((ground.localScale.x / 2) - 1), ground.position.x + ((ground.localScale.x / 2) - 1))
+        return new Vector3( Random.Range(this.ground.position.x - ((this.ground.localScale.x / 2) - 1), this.ground.position.x + ((this.ground.localScale.x / 2) - 1))
                             , 0.2f
-                            , Random.Range(ground.position.z - ((ground.localScale.y / 2) - 1), ground.position.z + ((ground.localScale.y / 2) - 1)));
+                            , Random.Range(this.ground.position.z - ((this.ground.localScale.y / 2) - 1), this.ground.position.z + ((this.ground.localScale.y / 2) - 1)));
     }
 }
