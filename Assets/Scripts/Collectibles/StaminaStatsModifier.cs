@@ -8,6 +8,6 @@ public class StaminaStatsModifier : MonoBehaviour , IOnTriggerAction
     
     public void activateTriggerEvent(GameObject player)
     {
-        player.GetComponent<Stamina>()?.addStamina(staminaToAdd);
+        player.GetComponent<Stamina>()?.addStamina(this.staminaToAdd);
     }
 }
