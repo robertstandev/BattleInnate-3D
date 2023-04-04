@@ -11,15 +11,15 @@ public class Jump : MonoBehaviour
 
     public void jump(Rigidbody rb, Stamina staminaComponent, int staminaToConsume)
     {
-        if((jumpCounter < maxJumps) && (staminaComponent.getCurrentStamina() >= staminaToConsume))
+        if((this.jumpCounter < this.maxJumps) && (staminaComponent.getCurrentStamina() >= staminaToConsume))
         {
             staminaComponent.substractStamina(staminaToConsume);
-            jumpCounter += 1;
-            rb.AddForce(jumpVector3 * jumpPower);
+            this.jumpCounter += 1;
+            rb.AddForce(this.jumpVector3 * this.jumpPower);
         }
     }
 
-    public void setJumpCounter(int value) { this.jumpCounter = value < maxJumps ? value : this.jumpCounter; }
+    public void setJumpCounter(int value) { this.jumpCounter = value < this.maxJumps ? value : this.jumpCounter; }
 
     public int getJumpCounter() { return this.jumpCounter; }
 
