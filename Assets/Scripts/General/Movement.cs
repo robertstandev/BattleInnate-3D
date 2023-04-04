@@ -9,11 +9,11 @@ public class Movement : MonoBehaviour
 
     public void changeMovementData(Vector2 movementVector2)
     {
-        movementVector3.x = movementVector2.x;
-        movementVector3.z = movementVector2.y;
+        this.movementVector3.x = movementVector2.x;
+        this.movementVector3.z = movementVector2.y;
     }
 
-    public void moveCharacter(Rigidbody rb){ rb.AddForce(movementVector3 * movementSpeed); }
+    public void moveCharacter(Rigidbody rb){ rb.AddForce(this.movementVector3 * this.movementSpeed); }
 
     public void setMovementSpeed(float value) { this.movementSpeed = value; }
 
