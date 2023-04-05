@@ -13,13 +13,13 @@ public class ArenaMapModifier : MonoBehaviour
 
     private void scaleMap()
     {
-        if(ground.localScale.x < 10f || ground.localScale.y < 10f)
+        if(this.ground.localScale.x < 10f || this.ground.localScale.y < 10f)
         {
             CancelInvoke();
         }
         else
         {
-            ground.localScale -= shrinkGroundPerTick;
+            this.ground.localScale -= this.shrinkGroundPerTick;
         } 
     }
 }
