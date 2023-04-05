@@ -7,7 +7,7 @@ public class PhysicsActivation : MonoBehaviour
     [SerializeField]private float activateGravityAfterSec = 2f;
     private Rigidbody rbComponent;
 
-    private void Awake() { rbComponent = GetComponent<Rigidbody>(); }
+    private void Awake() { this.rbComponent = GetComponent<Rigidbody>(); }
 
     private void OnDisable() { CancelInvoke(); }
 
@@ -15,13 +15,13 @@ public class PhysicsActivation : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            Invoke("activateGravity", activateGravityAfterSec);
+            Invoke("activateGravity", this.activateGravityAfterSec);
         }
     }
 
     private void activateGravity()
     {
-        rbComponent.isKinematic = false;
-        rbComponent.useGravity = true;
+        this.rbComponent.isKinematic = false;
+        this.rbComponent.useGravity = true;
     }
 }
