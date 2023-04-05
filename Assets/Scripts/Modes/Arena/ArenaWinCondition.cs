@@ -24,7 +24,7 @@ public class ArenaWinCondition : MonoBehaviour, IOnTriggerAction
 
    private void checkWinCondition()
    {
-       if(currentEnemyDeaths < enemyDeaths)
+       if(this.currentEnemyDeaths < this.enemyDeaths)
         {
             this.currentEnemyDeaths += 1;
         }
@@ -37,18 +37,18 @@ public class ArenaWinCondition : MonoBehaviour, IOnTriggerAction
    private void gameEnded(string textString)
    {
        freezeAllRigidbody();
-        canvasText.text = textString;
-        canvasText.enabled = true;
+        this.canvasText.text = textString;
+        this.canvasText.enabled = true;
         Invoke("returnToMainMenu", 2f);
    }
 
    private void freezeAllRigidbody()
    {
-       rigidbodyContainingObjects = GameObject.FindObjectsOfType<Rigidbody>();
+       this.rigidbodyContainingObjects = GameObject.FindObjectsOfType<Rigidbody>();
 
-       for(int i = 0; i < rigidbodyContainingObjects.Length; i++)
+       for(int i = 0; i < this.rigidbodyContainingObjects.Length; i++)
        {
-           rigidbodyContainingObjects[i].constraints = RigidbodyConstraints.FreezeAll;
+           this.rigidbodyContainingObjects[i].constraints = RigidbodyConstraints.FreezeAll;
        }
    }
 
