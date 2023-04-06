@@ -11,7 +11,7 @@ public class RaceFinishLine : MonoBehaviour, IOnTriggerAction
     public void activateTriggerEvent(GameObject triggeredObject)
     {
         triggeredObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-        place += 1;
+        this.place += 1;
         if(triggeredObject.CompareTag("Player"))
         {
             configurePlaceDisplay();
@@ -21,20 +21,20 @@ public class RaceFinishLine : MonoBehaviour, IOnTriggerAction
 
     private void configurePlaceDisplay()
     {
-        textComponent.text = "You finished : " + place;
-        switch (place)
+        this.textComponent.text = "You finished : " + this.place;
+        switch (this.place)
         {
             case 1:
-                textComponent.text += "st";
+                this.textComponent.text += "st";
                 break;
             case 2:
-                textComponent.text += "nd";
+                this.textComponent.text += "nd";
                 break;
             case 3:
-                textComponent.text += "rd";
+                this.textComponent.text += "rd";
                 break;
         }
-        textComponent.enabled = true;
+        this.textComponent.enabled = true;
     }
 
     private void returnToMainMenu() { transform.GetComponent<ScenesManager>().returnToMainMenu(); }
