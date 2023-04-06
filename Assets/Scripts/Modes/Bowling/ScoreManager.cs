@@ -12,37 +12,37 @@ public class ScoreManager : MonoBehaviour, IOnTriggerAction
 
 	public void activateTriggerEvent(GameObject triggeredObject)
 	{
-		textComponent.text = "Waiting for pins physics...";
+		this.textComponent.text = "Waiting for pins physics...";
 		Invoke("checkPinsAndDisplayScore", 4f);
 	}
 
 	private void checkPinsAndDisplayScore()
 	{
-		score = 0;
+		this.score = 0;
 		checkPinsRotations();
 		checkFallenPins();
-		textComponent.text = "Score: " + score;
+		this.textComponent.text = "Score: " + this.score;
 	}
 	private void checkPinsRotations()
 	{
-		for (int i = 0 ; i < bowlingPins.Length ; i++)
+		for (int i = 0 ; i < this.bowlingPins.Length ; i++)
 		{
-			rotationInEuler = bowlingPins[i].transform.rotation.eulerAngles;
-			if (Mathf.Abs(rotationInEuler.x) > 10f || Mathf.Abs(rotationInEuler.z) > 10f)
+			this.rotationInEuler = this.bowlingPins[i].transform.rotation.eulerAngles;
+			if (Mathf.Abs(this.rotationInEuler.x) > 10f || Mathf.Abs(this.rotationInEuler.z) > 10f)
 			{
-				bowlingPins[i].SetActive(false);
+				this.bowlingPins[i].SetActive(false);
 			}
-			rotationInEuler = Vector3.zero;
+			this.rotationInEuler = Vector3.zero;
 		}
 	}
 
 	private void checkFallenPins()
 	{
-		for (int i = 0 ; i < bowlingPins.Length ; i++)
+		for (int i = 0 ; i < this.bowlingPins.Length ; i++)
 		{
-			if(!bowlingPins[i].activeInHierarchy)
+			if(!this.bowlingPins[i].activeInHierarchy)
 			{
-				score += 1;
+				this.score += 1;
 			}
 		}
 	}
