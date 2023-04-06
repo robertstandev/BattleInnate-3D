@@ -13,46 +13,46 @@ public class ModeManager : MonoBehaviour, IOnTriggerAction
 
     private void Awake()
     { 
-        respawnPlayerComponent = FindObjectOfType<RespawnPlayer>();
-        scoreManagerComponent = GetComponent<ScoreManager>();
+        this.respawnPlayerComponent = FindObjectOfType<RespawnPlayer>();
+        this.scoreManagerComponent = GetComponent<ScoreManager>();
     }
 
     public void activateTriggerEvent(GameObject triggeredObject)
     {
         if(triggeredObject.CompareTag("Player"))
         {
-            respawnPlayerComponent.stopRigidbody();
+            this.respawnPlayerComponent.stopRigidbody();
             Invoke("checkWhatToDo" , 5f);
         }
     }
 
     private void checkWhatToDo()
     {
-        counterTries += 1;
+        this.counterTries += 1;
 
-        if(counterTries == nrOfTries || scoreManagerComponent.getScore() == 10)
+        if(this.counterTries == this.nrOfTries || this.scoreManagerComponent.getScore() == 10)
         {
             createEndMessage();
             Invoke("returnToMainMenu", 3f);
         }
         else
         {
-            respawnPlayerComponent.respawn();
+            this.respawnPlayerComponent.respawn();
         }
     }
 
     private void createEndMessage()
     {
-        if(scoreManagerComponent.getScore() < 10)
+        if(this.scoreManagerComponent.getScore() < 10)
         {
-            textComponent.text = "You lost!";
+            this.textComponent.text = "You lost!";
         }
         else
         {
-            textComponent.text = "You won!";
+            this.textComponent.text = "You won!";
         }
 
-        textComponent.enabled = true;
+        this.textComponent.enabled = true;
     }
 
     private void returnToMainMenu() { transform.GetComponent<ScenesManager>().returnToMainMenu(); }
