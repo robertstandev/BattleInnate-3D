@@ -9,7 +9,7 @@ public class MazeFinishLine : MonoBehaviour, IOnTriggerAction
     public void activateTriggerEvent(GameObject triggeredObject)
     {
         triggeredObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-        textCanvas.enabled = true;
+        this.textCanvas.enabled = true;
         Invoke("returnToMainMenu", 3f);
     }
 
