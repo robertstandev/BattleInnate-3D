@@ -14,8 +14,8 @@ public class FallenOffMap : MonoBehaviour , IFallenOffMap
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         GetComponent<Renderer>().enabled = false;
 
-        textComponent.text = "You lost!";
-        textComponent.enabled = true;
+        this.textComponent.text = "You lost!";
+        this.textComponent.enabled = true;
     }
 
     private void returnToMainMenu() { transform.GetComponent<ScenesManager>().returnToMainMenu(); }
