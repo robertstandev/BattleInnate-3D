@@ -9,10 +9,10 @@ public class PlayerControllerMenu : MonoBehaviour
     private InputAction menuInput;
     private void Awake()
     {
-        menuInput = GetComponent<IPlayerInput>().getMenuInput;
-        menuInput.performed += ctx => OnMenuCalled();
+        this.menuInput = GetComponent<IPlayerInput>().getMenuInput;
+        this.menuInput.performed += ctx => OnMenuCalled();
     }
-    private void OnEnable() { menuInput.Enable(); }
-    private void OnDisable() { menuInput.Disable(); }
-    private void OnMenuCalled() { menuCanvas.enabled = !menuCanvas.enabled; }
+    private void OnEnable() { this.menuInput.Enable(); }
+    private void OnDisable() { this.menuInput.Disable(); }
+    private void OnMenuCalled() { this.menuCanvas.enabled = !this.menuCanvas.enabled; }
 }
