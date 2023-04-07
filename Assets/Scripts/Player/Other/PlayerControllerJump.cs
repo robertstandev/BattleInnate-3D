@@ -17,24 +17,24 @@ public class PlayerControllerJump : MonoBehaviour
 
     private void Awake()
     {
-        jumpInput = GetComponent<IPlayerInput>().getJumpInput;
-        jumpInput.performed += ctx => OnJump();
+        this.jumpInput = GetComponent<IPlayerInput>().getJumpInput;
+        this.jumpInput.performed += ctx => OnJump();
 
-        jumpComponent = GetComponent<Jump>();
-        staminaComponent = GetComponent<Stamina>();
-        checkSurroundingsComponent = GetComponent<CheckSurroundings>();
-        rb = GetComponent<Rigidbody>();
-        charRenderer = GetComponent<Renderer>();
+        this.jumpComponent = GetComponent<Jump>();
+        this.staminaComponent = GetComponent<Stamina>();
+        this.checkSurroundingsComponent = GetComponent<CheckSurroundings>();
+        this.rb = GetComponent<Rigidbody>();
+        this.charRenderer = GetComponent<Renderer>();
     }
 
-    private void OnEnable() { jumpInput.Enable(); }
-    private void OnDisable() { jumpInput.Disable(); }
+    private void OnEnable() { this.jumpInput.Enable(); }
+    private void OnDisable() { this.jumpInput.Disable(); }
 
-    private void OnJump(){ jumpComponent.jump(rb, staminaComponent , 10); }
+    private void OnJump(){ this.jumpComponent.jump(this.rb, this.staminaComponent , 10); }
 
     private void LateUpdate()
     {
-        if(checkSurroundingsComponent.isColliding(new Vector3(0f,-0.1f,0f), charRenderer, 0.2f, Vector3.down))
+        if(this.checkSurroundingsComponent.isColliding(new Vector3(0f,-0.1f,0f), this.charRenderer, 0.2f, Vector3.down))
         {
             jumpComponent.setJumpCounter(1);
         }
