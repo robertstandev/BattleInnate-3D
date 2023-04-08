@@ -14,18 +14,18 @@ public class PlayerControllerMove : MonoBehaviour
 
     private void Awake()
     {
-        movementInput = GetComponent<IPlayerInput>().getMovementInput;
-        movementInput.performed += ctx => OnMove(ctx);
-        movementInput.canceled += ctx => OnMove(ctx);
+        this.movementInput = GetComponent<IPlayerInput>().getMovementInput;
+        this.movementInput.performed += ctx => OnMove(ctx);
+        this.movementInput.canceled += ctx => OnMove(ctx);
 
-        movementComponent = GetComponent<Movement>();
-        rb = GetComponent<Rigidbody>();
+        this.movementComponent = GetComponent<Movement>();
+        this.rb = GetComponent<Rigidbody>();
     }
 
-    private void OnEnable() { movementInput.Enable(); }
-    private void OnDisable() { movementInput.Disable(); }
+    private void OnEnable() { this.movementInput.Enable(); }
+    private void OnDisable() { this.movementInput.Disable(); }
 
-    private void FixedUpdate() { movementComponent.moveCharacter(rb); }
+    private void FixedUpdate() { this.movementComponent.moveCharacter(this.rb); }
 
-    private void OnMove(InputAction.CallbackContext context) { movementComponent.changeMovementData(context.ReadValue<Vector2>()); }
+    private void OnMove(InputAction.CallbackContext context) { this.movementComponent.changeMovementData(context.ReadValue<Vector2>()); }
 }
