@@ -12,9 +12,9 @@ public class RespawnPlayer : MonoBehaviour
 
     private void Awake()
     { 
-        rb = GetComponent<Rigidbody>();
-        controllerMoveComponent = GetComponent<PlayerControllerMove>();
-        controllerJumpComponent = GetComponent<PlayerControllerJump>();
+        this.rb = GetComponent<Rigidbody>();
+        this.controllerMoveComponent = GetComponent<PlayerControllerMove>();
+        this.controllerJumpComponent = GetComponent<PlayerControllerJump>();
     }
 
     public void respawn()
@@ -23,21 +23,21 @@ public class RespawnPlayer : MonoBehaviour
         changePositionAndRotation();
     }
 
-    private void changePositionAndRotation() { transform.SetPositionAndRotation(position , rotation); }
+    private void changePositionAndRotation() { transform.SetPositionAndRotation(this.position , this.rotation); }
 
-    public void stopRigidbody() { rb.constraints = RigidbodyConstraints.FreezeAll; }
+    public void stopRigidbody() { this.rb.constraints = RigidbodyConstraints.FreezeAll; }
 
     private void resetComponents()
     {
-        if(controllerMoveComponent != null)
+        if(this.controllerMoveComponent != null)
         {
-            controllerMoveComponent.enabled = true;
+            this.controllerMoveComponent.enabled = true;
         }
         
-        if(controllerJumpComponent != null)
+        if(this.controllerJumpComponent != null)
         {
-            controllerJumpComponent.enabled = true;
+            this.controllerJumpComponent.enabled = true;
         }
-        rb.constraints = RigidbodyConstraints.None;
+        this.rb.constraints = RigidbodyConstraints.None;
     }
 }
